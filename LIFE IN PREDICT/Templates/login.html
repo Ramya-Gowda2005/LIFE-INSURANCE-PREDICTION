@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Life Insurance Risk Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url("https://plus.unsplash.com/premium_photo-1723507291530-47c2f7aa9197?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .overlay h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #3a3a3a;
+        }
+
+        .overlay input[type="text"],
+        .overlay input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .overlay input[type="submit"] {
+            width: 100%;
+            background-color: #3a6186;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .overlay input[type="submit"]:hover {
+            background-color: #295e7d;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .links {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .links a {
+            color: #3a6186;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay">
+        <h2>Login</h2>
+        <form method="POST" action="{{ url_for('login') }}" autocomplete="off">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <div class="links">
+            <p>
+                <a href="{{ url_for('forgot_password') }}">Forgot Password?</a><br>
+                <a href="{{ url_for('change_password') }}">Change Password</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

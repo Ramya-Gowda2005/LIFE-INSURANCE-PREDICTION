@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Life Insurance Risk Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, rgba(58, 97, 134, 0.8), rgba(137, 37, 62, 0.8)),
+                        url('https://images.unsplash.com/photo-1604313476893-31aabc9c7fbb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGxpZmUlMjBpbnN1cmFuY2V8ZW58MHx8MHx8fDA%3D') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.97);
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            width: 480px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: linear-gradient(to right, #3a6186, #89253e);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(to right, #2b4a6a, #6b1f31);
+            transform: scale(1.03);
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .result h2 {
+            color: #1b4f72;
+            font-size: 24px;
+        }
+
+        .result h3 {
+            color: #555;
+            font-weight: normal;
+            font-size: 18px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧾 Insurance Risk Predictor</h1>
+        <form method="POST">
+            <label>Age</label>
+            <input type="number" name="age" placeholder="Enter your age" required>
+
+            <label>Sex</label>
+            <select name="sex" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label>BMI</label>
+            <input type="text" name="bmi" placeholder="e.g., 27.3" required>
+
+            <label>Children</label>
+            <input type="number" name="children" placeholder="Number of dependents" required>
+
+            <label>Smoker</label>
+            <select name="smoker" required>
+                <option value="" disabled selected>Do you smoke?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Region</label>
+            <select name="region" required>
+                <option value="" disabled selected>Select your region</option>
+                <option value="northeast">Northeast</option>
+                <option value="northwest">Northwest</option>
+                <option value="southeast">Southeast</option>
+                <option value="southwest">Southwest</option>
+            </select>
+
+            <input type="submit" value="Predict Risk 🔍">
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>{{ prediction }}</h2>
+            <h3>Confidence Level: {{ raw_prediction }}</h3>  <!-- Display confidence level -->
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

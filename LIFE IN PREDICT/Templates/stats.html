@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #dfe6e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .stats-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stats-box h2 {
+            margin-bottom: 30px;
+        }
+        .stat {
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #0984e3;
+        }
+    </style>
+</head>
+<body>
+    <div class="stats-box">
+        <h2>Prediction Statistics</h2>
+        <div class="stat">Total Predictions: {{ total }}</div>
+        <div class="stat">High Risk: {{ high_risk }}</div>
+        <div class="stat">Low Risk: {{ total - high_risk }}</div>
+        <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
+`

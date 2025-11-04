@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Life Insurance Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #1d2b64, #f8cdda, #2c3e50, #bdc3c7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .navbar {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .navbar form,
+        .navbar a {
+            margin: 5px;
+        }
+        
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-blue {
+            background: linear-gradient(145deg, #3a8dde, #1c6cb8);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-blue:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, #1c6cb8, #3a8dde);
+        }
+        
+        .btn-red {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-red:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, #c0392b, #e74c3c);
+        }
+        
+        .container {
+            margin-top: 120px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            color: #fff;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .container h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container h1 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="{{ url_for('predict') }}" class="btn btn-blue">🔮 Predict Risk</a>
+        <a href="{{ url_for('recent_predictions') }}" class="btn btn-blue">🕓 Recent Predictions</a>
+        <a href="{{ url_for('history') }}" class="btn btn-blue">📜 Full History</a>
+        <a href="{{ url_for('export_csv') }}" class="btn btn-blue">📤 Export CSV</a>
+        <a href="{{ url_for('stats') }}" class="btn btn-blue">📈 View Stats</a>
+        <a href="{{ url_for('feedback') }}" class="btn btn-blue">💬 Feedback</a>
+        <a href="{{ url_for('change_password') }}" class="btn btn-blue">🔑 Change Password</a>
+        <form method="POST" action="{{ url_for('logout') }}">
+            <button type="submit" class="btn btn-red">🚪 Logout</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h1>Welcome, {{ session['username'] }}! 🎉</h1>
+    </div>
+
+</body>
+
+</html>
